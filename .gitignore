@@ -1,0 +1,6 @@
+third_party/abseil-cpp/*
+third_party/benchmark/*
+third_party/googletest/*
+cmake-build-debug
+build/*
+build_glog/*

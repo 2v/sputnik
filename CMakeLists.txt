@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.10)
 
 project(SPUTNIK CUDA CXX C)
 
@@ -29,8 +29,21 @@ if(BUILD_TEST)
   set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -DSPUTNIK_BUILD_TEST")
 endif()
 
-create_cuda_gencode_flags(CUDA_GENCODE_FLAGS ${CUDA_ARCHS})
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CUDA_GENCODE_FLAGS}")
+enable_language(CUDA)
+
+# check if CUDA is available
+include(CheckLanguage)
+check_language(CUDA)
+
+if(NOT DEFINED CMAKE_CUDA_STANDARD)
+  set(CMAKE_CUDA_STANDARD 11)
+  set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+endif()
+
+# the CUDA compute capability for our Titan X GPUs is 5.2 (https://developer.nvidia.com/cuda-gpus)
+if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+  set(CMAKE_CUDA_ARCHITECTURES 52)
+endif()
 
 ##
 ### Project build.

@@ -56,8 +56,16 @@ list(FILTER SPUTNIK_CUDA_SRCS INCLUDE REGEX "\.cu\.cc")
 set_source_files_properties(${SPUTNIK_CUDA_SRCS} PROPERTIES LANGUAGE CUDA)
 
 # Create libsputnik.
+
+# TB: ATTEMPTING TO ADD THREAD SUPPORT
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+#target_link_libraries(sputnik PRIVATE Threads::Threads)
+
 add_library(sputnik SHARED ${SPUTNIK_SRCS})
-target_link_libraries(sputnik ${SPUTNIK_LIBS})
+target_link_libraries(sputnik ${SPUTNIK_LIBS}
+				Threads::Threads)
+
 
 # Library installation.
 install(TARGETS sputnik)
