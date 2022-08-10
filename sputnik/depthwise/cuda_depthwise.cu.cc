@@ -24,8 +24,7 @@
 #include "sputnik/load_store.h"
 #include "sputnik/tiling_utils.h"
 
-//#include "glog/logging.h"
-#include "build_glog/glog/logging.h"
+#include "glog/logging.h"
 
 namespace sputnik {
 

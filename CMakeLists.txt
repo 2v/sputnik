@@ -42,7 +42,7 @@ endif()
 
 # the CUDA compute capability for our Titan X GPUs is 5.2 (https://developer.nvidia.com/cuda-gpus)
 if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
-  set(CMAKE_CUDA_ARCHITECTURES 52)
+  set(CMAKE_CUDA_ARCHITECTURES 75)
 endif()
 
 ##

@@ -15,7 +15,8 @@ list(APPEND SPUTNIK_LIBS "CUDA::cudart;CUDA::cublas;CUDA::cusparse;CUDA::culibos
 # Google Glog.
 # find_package(Glog REQUIRED)
 
-add_subdirectory(/home2/tabuckley/glog /home2/tabuckley/sputnik/build_glog)
+# add_subdirectory(/home2/tabuckley/glog /home2/tabuckley/sputnik/build_glog)
+add_subdirectory(third_party/glog)
 
 # list(APPEND SPUTNIK_LIBS ${GLOG_LIBRARIES})
 list(APPEND SPUTNIK_LIBS glog::glog)
